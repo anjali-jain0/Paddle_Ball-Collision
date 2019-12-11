@@ -12,8 +12,9 @@ index.js contains logic for :
 ## Technology
  
  * HTML5
- * Canvas API
  * CSS
+ * Canvas API
+ * Javascript
 
 
 
