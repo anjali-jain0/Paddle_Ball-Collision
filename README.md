@@ -1,8 +1,5 @@
 # Paddle_Ball-Collision
 <img src="video.gif" width="600px" height="400px" />
-Paddle Ball Collision
-
-## Features
 This game uses html5 and canvas api to create the game. It makes use of the keyboard arrow keys to move the paddle left-right.
 
 ## Implementation
