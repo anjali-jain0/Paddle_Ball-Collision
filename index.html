@@ -1,111 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
 	<title>Collision game</title>
 	<link href='style.css' rel="stylesheet">
 </head>
-
 <body>
-	<canvas id="canvas1" width="100%" height="100%"></canvas>
+    
+    <div id = 'gamePage' >
+		<canvas id="canvas"> </canvas>
+	</div>
+	<div id = 'endBox' >
+		<h2 class = 'endText' > Game Over! </h2>
+        <p class = 'endText' > Your Score is : 
+        	<span id = 'score' > </span>
+        </p>
+        <a href = './index.html'> 
+			<button class='tryAgainBtn'> Try Again </button>
+		</a>
+	</div>
+
 </body>
-<script>
-	var c=document.getElementById("canvas1");
-	var ctx=c.getContext("2d");
-	c.width=window.innerWidth*0.68;
-	c.height=window.innerHeight*0.92;
-	function Rect(x,y,w,h)
-	{
-		this.x=x;
-		this.y=y;
-		this.w=w;
-		this.h=h;
-		this.draw=function()
-		{
-			ctx.beginPath();
-			ctx.fillStyle="#58A8C9";
-			ctx.fillRect(this.x,this.y,this.w,this.h);
-		}
-		
-		
-	}
-	var array=[];var x1=20;var y1=70;
-	for(var i=0;i<40;i++)
-	{
-		var w=70;var h=30;
-	  if(x1+70>c.width)
-	  {y1+=40;x1=20;}
-	  array.push(new Rect(x1,y1,w,h));
-	  x1+=90;
-	}
-
-		
-	window.addEventListener("keyup",
-	    function(event)
-	    {
-	    	if(event.keyCode=="37")
-	    	{
-	    		dx2=-120;
-	    		x2+=dx2;
-	    	}
-	    	else if(event.keyCode=="39")
-	    	{
-	    		dx2=120;
-	    		x2+=dx2;
-	    	}
-	    });
-	var x2=300;var x3=300;var y3=400;var dx3=4;var dy3=4;
-
-	var s=0;
-
-	function animate()
-	{
-		requestAnimationFrame(animate);
-		ctx.clearRect(0,0,innerWidth,innerHeight);
-		ctx.font="25px Arial";
-		ctx.fillStyle="black";
-		ctx.fillText("Score: " + s,400,35);
-		for(var j=0;j<array.length;j++)
-		{
-			array[j].draw();
-			if(x3+10>=array[j].x && x3-10<=array[j].x+w && y3-array[j].y<=40 && array[j].w>0)
-			{
-				array[j].w=0;
-				s++;
-	            dy3=-dy3;
-			}
-		}
-		ctx.beginPath();
-		ctx.fillStyle="#E51E2B";
-		ctx.fillRect(x2,c.height-20,200,20);
-
-		ctx.beginPath();
-		ctx.arc(x3,y3,10,0,2*Math.PI);
-		ctx.fillStyle="#4FAA6D";
-		ctx.fill();
-		if(x3+20>c.width || x3<20)
-		{
-			dx3=-dx3;
-		}
-		if(y3<70)
-		{
-			dy3=-dy3;
-		}
-		if(y3+30>c.height)
-		{
-			if(x3+10>=x2 && x3-10<=x2+200)
-			{
-				dy3=-dy3;
-			}
-			else if(y3>c.height-20)
-				{alert("game over!!");}
-		}
-		x3+=dx3;
-		y3+=dy3;
-
-
-		
-	}
-	animate();
-</script>
+<script src='./index.js'> </script>
 </html>
